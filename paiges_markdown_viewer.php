@@ -6,7 +6,7 @@
  * Author: Paige Julianne Sullivan
  * Author URI: https://paigejulianne.com/
  * License: GPL-2.0-or-later
- * Text Domain: paiges_markdown_viewer
+ * Text Domain: paiges-markdown-viewer
  */
 
 if (!defined('ABSPATH')) {
