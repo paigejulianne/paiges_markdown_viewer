@@ -17,7 +17,8 @@ Paige's Markdown Viewer allows you to easily add beautifully formatted Markdown 
 - **Clean Styling** - Beautiful, readable typography with proper code formatting
 - **Dark Mode Support** - Automatic dark mode styles based on user preferences
 - **Secure** - Uses safe mode parsing to prevent XSS attacks
-- **Cached Requests** - External URLs are cached for 5 minutes to improve performance
+- **Live Content** - External URLs are fetched on page load, keeping content up-to-date
+- **Smart Caching** - URLs are cached for 5 minutes by default, with option to disable caching
 
 ## Installation
 
@@ -75,6 +76,14 @@ GitHub URLs are automatically converted to raw format for proper fetching.
 
 This creates a scrollable container with a maximum height of 400 pixels.
 
+#### Disable Caching
+
+```
+[paiges_markdown url="https://example.com/file.md" no_cache="true"]
+```
+
+By default, external URLs are cached for 5 minutes. Use `no_cache="true"` to fetch fresh content on every page load.
+
 ## Supported Markdown Syntax
 
 - **Headings** (# H1, ## H2, ### H3, etc.)
@@ -97,6 +106,15 @@ In the block editor sidebar, you can configure:
 
 - **Content Source**: Choose between direct input or URL
 - **Maximum Height**: Set a pixel value to create a scrollable container (0 = no limit)
+- **Disable Caching**: When using URL source, toggle this to fetch fresh content on every page load (off by default)
+
+## Caching Behavior
+
+When loading markdown from external URLs:
+
+- **Default**: Content is cached for 5 minutes to improve performance and reduce server load
+- **No Cache**: Enable "Disable Caching" in block settings or use `no_cache="true"` in shortcode for always-fresh content
+- **Live Link**: This plugin fetches content from the URL on each page load (subject to caching) - it does not store a permanent copy
 
 ## Requirements
 
