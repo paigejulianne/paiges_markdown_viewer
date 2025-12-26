@@ -130,6 +130,9 @@ function paiges_markdown_viewer_render($attributes) {
     $parsedown->setSafeMode(true); // Enable safe mode to prevent XSS
     $html_content = $parsedown->text($markdown_content);
 
+    // Escape shortcode-like syntax to prevent WordPress from processing them
+    $html_content = preg_replace('/\[(\/?[a-zA-Z_][a-zA-Z0-9_]*)/', '&#91;$1', $html_content);
+
     // Handle max height setting
     $max_height = isset($attributes['maxHeight']) ? intval($attributes['maxHeight']) : 0;
     $inline_style = '';
@@ -208,6 +211,9 @@ function paiges_markdown_viewer_shortcode($atts, $content = null) {
     $parsedown = new Parsedown();
     $parsedown->setSafeMode(true);
     $html_content = $parsedown->text($markdown_content);
+
+    // Escape shortcode-like syntax to prevent WordPress from processing them
+    $html_content = preg_replace('/\[(\/?[a-zA-Z_][a-zA-Z0-9_]*)/', '&#91;$1', $html_content);
 
     // Handle max height setting
     $max_height = intval($atts['max_height']);
